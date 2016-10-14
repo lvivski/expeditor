@@ -3,7 +3,7 @@ var cache = {}
 
 module.exports = function Expeditor (routes) {
   return function (uri, params) {
-    if (!uri) throw new Error('expeditor requires URI')
+    if (!uri) throw new TypeError('Expeditor requires URI')
 		params || (params == {})
 
     for (var pattern in routes) {
@@ -30,6 +30,7 @@ function match(pattern, uri, params) {
 
   if (!match) return false
   else if (!params) return true
+
   for (var i = 1, len = match.length; i < match.length; ++i) {
     var key = keys[i - 1]
     var val = typeof match[i] === 'string' ? decodeURIComponent(match[i]) : match[i]
