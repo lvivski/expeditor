@@ -1,14 +1,14 @@
 var toRegex = require('path-to-regexp')
 var cache = {}
 
-module.exports = function Expeditor (routes) {
+module.exports = function expeditor (routes) {
   return function (uri, params) {
-    if (!uri) throw new TypeError('Expeditor requires URI')
+    if (!uri) throw new TypeError('expeditor requires URI')
 		params || (params == {})
 
     for (var pattern in routes) {
-      var m = match(pattern, uri, params)
-      if (m) {
+      var match = matchURI(pattern, uri, params)
+      if (match) {
 				var handler = routes[pattern]
         if (typeof handler !== 'function') return handler
         else return handler(params)
@@ -19,7 +19,11 @@ module.exports = function Expeditor (routes) {
   }
 }
 
-function match(pattern, uri, params) {
+exports.compile = function (pattern) {
+	return toRegex.compile(pattern)
+}
+
+function matchURI(pattern, uri, params) {
   var regex = cache[pattern]
 	if (!regex) {
 			var keys = []
