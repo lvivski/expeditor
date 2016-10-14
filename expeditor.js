@@ -31,7 +31,7 @@ function match(pattern, uri, params) {
   if (!match) return false
   else if (!params) return true
 
-  for (var i = 1, len = match.length; i < match.length; ++i) {
+  for (var i = 1; i < match.length; ++i) {
     var key = keys[i - 1]
     var val = typeof match[i] === 'string' ? decodeURIComponent(match[i]) : match[i]
     if (key) {
