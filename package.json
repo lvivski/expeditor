@@ -1,0 +1,19 @@
+{
+  "name": "expeditor",
+  "version": "1.0.0",
+  "description": "Minimalistic router",
+  "main": "expeditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "router",
+    "minimal",
+    "isomorphic"
+  ],
+  "author": "Yehor Lvivski <yehor@lvivski.com>",
+  "license": "MIT",
+  "dependencies": {
+    "path-to-regexp": "^1.6.0"
+  }
+}
